@@ -25,7 +25,6 @@ public class MazeGameDFS {
         boolean solved = dfsSolver(startRow, startCol);
         long endTime = System.nanoTime();
         double timeElapsed = (endTime - startTime) / 1e6;  // convert to milliseconds
-        double time = endTime - startTime;  // convert to milliseconds
 
         if (solved) {
             printPath();
@@ -34,6 +33,7 @@ public class MazeGameDFS {
             printMaze();
             System.out.println("-------------------------------------");
             System.out.println("Time elapsed: " + timeElapsed + " ms");
+            System.out.print("-------------------------------------");
         } else {
             System.out.println("No solution found");
             System.out.print("-------------------------------------");
@@ -84,15 +84,15 @@ public class MazeGameDFS {
         }
         if (startRow == goalRow) {
             if (startCol > goalCol)
-                status = "right";
+                status = "right"; // start is right goal
             else
-                status = "left";
+                status = "left"; // start is left goal
         }
         if (startCol == goalCol)
             if (startRow > goalRow)
-                status = "down";
+                status = "down"; // start is down goal
             else
-                status = "up";
+                status = "up"; // start is up goal
     }
 
     private static boolean dfsSolver(int currRow, int currCol) {
